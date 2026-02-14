@@ -1,8 +1,7 @@
+
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "mason-org/mason.nvim",
-    "mason-org/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/nvim-cmp",
   },
@@ -24,13 +23,6 @@ return {
         vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
       end,
-    })
-
-
-    -- Mason setup
-    require("mason").setup({
-      ensure_installed = {
-      },
     })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
