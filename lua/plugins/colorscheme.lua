@@ -1,5 +1,13 @@
 return {
     {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent = true
+        }
+    },
+    {
         "EdenEast/nightfox.nvim",
         priority = 1000,
         lazy = false,
