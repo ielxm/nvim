@@ -1,38 +1,22 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  branch = "main",
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  build = ':TSUpdate',
+  opts = {
+    install_dir = vim.fn.stdpath('data') .. '/site',
+  },
   config = function()
-    require("nvim-treesitter.config").setup({
-        ensure_installed = {
-          "c",
-          "cpp",
-          "python",
-          "html",
-          "css",
-          "javascript",
-          "lua",
-          "vim",
-          "vimdoc",
-          "query"
-          --"matlab",
-        },
-
-        sync_install = false,
-        auto_install = true,
-
-        autopairs = {
-          enable = true,
-        },
-
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = false,
-        },
-      })
-  end
+    require'nvim-treesitter'.install{
+        "c", "cpp", "python", "html", "css", "javascript", "lua", "vim", "vimdoc", "query", "markdown"
+    }
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = {
+        "c", "cpp", "python", "html", "css", "javascript", "lua", "vim", "vimdoc", "query", "markdown"
+      },
+      callback = function()
+        vim.treesitter.start()
+      end,
+    })
+  end,
 }
+
