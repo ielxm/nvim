@@ -4,6 +4,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path"
   },
 
   config = function()
@@ -25,7 +27,8 @@ return {
       end,
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
     -- Mason-lspconfig setup
     require("mason-lspconfig").setup({
@@ -39,6 +42,7 @@ return {
         -- tsserver = function(_, opts)
         --   require("lspconfig").tsserver.setup(opts)
         -- end,
+
       },
     })
 
@@ -76,7 +80,8 @@ return {
 
     cmp.setup({
       sources = {
-        {name = "nvim_lsp"},
+        { name = "nvim_lsp" },
+        { name = "path" }
       },
 
      mapping = {

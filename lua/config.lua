@@ -8,8 +8,9 @@ vim.opt.splitbelow = true -- split window
 vim.opt.splitright = true -- split window
 
 vim.opt.expandtab = true -- spaces instead tab
-vim.opt.tabstop = 2 -- 2 spaces is tab
-vim.opt.shiftwidth = 2 -- tabstop value
+vim.opt.tabstop = 4 -- 4 spaces is tab
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4 -- tabstop value
 vim.opt.smartindent = true -- for smarter spaces
 vim.opt.cursorline = true -- horisontal line
 vim.opt.clipboard = 'unnamedplus' -- yank to cliboard :)
@@ -27,9 +28,9 @@ vim.opt.shadafile = "NONE"
 ----------------------------------------------
 --- Загрузка иных конфигурационных файлов
 -----------------------------------------
-require('_lazy')
+require('lazynvim')
 require('autocmds')
-require('nvim_keymaps')
+require('keymaps')
 
 --------------------------------------
 --- Цвета, тема оформления Neovim
